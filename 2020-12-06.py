@@ -698,22 +698,154 @@ Quiz) 변수를 이용하여 다음 문장을 출력하시오
 # profile(name="유재석", main_lang="파이썬", age=20)
 # profile(main_lang="자바", age=25, name="김태호")
 
-# 36강. 가변인자
-# def profile(name, age, lang1, lang2, lang3, lang4, lang5):
+# # 36강. 가변인자
+# # def profile(name, age, lang1, lang2, lang3, lang4, lang5):
+# #     print("이름 : {0}\t나이 : {1}\t".format(name, age), end=" ")
+# #     print(lang1, lang2, lang3, lang4, lang5)
+
+# # profile("유재석", 20 , "Python", "Java", "C", "C++", "C#")
+# # profile("김태호", 25 , "Kotlin", "Swift", "", "" ,"")
+
+# def profile(name, age, *language):
 #     print("이름 : {0}\t나이 : {1}\t".format(name, age), end=" ")
-#     print(lang1, lang2, lang3, lang4, lang5)
+#     for lang in language:
+#         print(lang, end = " ")
+#     print()
 
-# profile("유재석", 20 , "Python", "Java", "C", "C++", "C#")
-# profile("김태호", 25 , "Kotlin", "Swift", "", "" ,"")
+# profile("유재석", 20 , "Python", "Java", "C", "C++", "C#", "Delphi")
+# profile("김태호", 25 , "Kotlin", "Swift")
 
-def profile(name, age, *language):
-    print("이름 : {0}\t나이 : {1}\t".format(name, age), end=" ")
-    for lang in language:
-        print(lang, end = " ")
-    print()
+# # 37강 지역변수와 전역변수
+# gun = 10
 
-profile("유재석", 20 , "Python", "Java", "C", "C++", "C#", "Delphi")
-profile("김태호", 25 , "Kotlin", "Swift")
-
+# def checkpoint(soldiers): # 경계근무
+#     global gun # 전역 공간에 있는 gun 사용
+#     gun = gun - soldiers
+#     print("[함수 내] 남은 총 : {0}".format(gun))
 
 
+# def checkpoint_ret(gun, soldiers):
+#     gun = gun - soldiers
+#     print("[함수 내] 남은 총 : {0}".format(gun))
+#     return gun
+# print("전체 총 : {0}".format(gun))
+# gun = checkpoint_ret(gun, 2) # 2명이 경계 근무 나감
+# print("남은 총 : {0}".format(gun))
+
+# # 38강. 퀴즈 6
+# '''
+# Quiz) 표준 체중을 구하는 프로그램을 작성하시오
+
+# * 표준 체중 : 각 개인의 키에 적당한 체중
+
+# (성별에 따른 공식)
+# 남자 : 키(m) x 키(m) x 22
+# 여자 : 키(m) x 키(m) x 21
+
+# 조건 1: 표준 체중은 별도의 함수 내에서 계산
+#         * 함수명 : std_weight
+#         * 전달값 : 키(height), 성별(gender)
+# 조건 2: 표준 체중은 소수점 둘째자리까지 표시
+
+# (출력 예제)
+# 키 175cm 남자의 표준 체중은 67.38kg 입니다.
+# '''
+
+# def std_weight(height, gender):
+#     if gender == "남자":
+#         return height * height * 22
+#     else : 
+#         return height * height * 21
+
+# height = 175 #cm 단위
+# gender = "남자"
+# weight = round(std_weight(height / 100, gender), 2)
+# print("키 {0}cm {1}의 표준 체중은 {2}kg입니다.".format(height, gender, weight))
+
+# # 39강. 표준 입출력
+# # print("Python", "Java")
+
+# # print("Python", "Java", "JavaScript", sep=" vs ")
+
+# # print("Python", "Java", sep=",", end="?")
+# # print("무엇이 더 재밌을까요?")
+
+# # import sys
+# # print("Python", "Java", file=sys.stdout) #표준 출력
+# # print("Python", "Java", file=sys.stderr) #표준 에러
+
+# # 시험 성적
+# # scores = {"수학":0, "영어":50, "코딩":100}
+# # for subject, score in scores.items():
+# #     # print(subject, score)
+# #     print(subject.ljust(8), str(score).rjust(4), sep=":")
+
+# # 은행 대기순번표
+# # 001, 002, 003, ...
+# # for num in range(1, 21):
+# #     print("대기번호 : " + str(num).zfill(3))
+
+# answer = input("아무 값이나 입력하세요 : ")
+# print(type(answer))
+# print("입력하신 값은 " + answer + "입니다.")
+# # 사용자 입력을 받으면 항상 문자열
+
+
+# # 40강. 다양한 출력 포맷
+# # 빈 자리는 빈공간으로 두고, 오른쪽 정렬을 하되, 총 10자리 공간을 확보
+# print("{0: >10}".format(500))
+
+# # 양수일 땐 +로 표시, 음수일 땐 -로 표시
+# print("{0: >+10}".format(500))
+# print("{0: >+10}".format(-500))
+# # 왼쪽 정렬하고, 빈칸으로 _로 채움
+# print("{0:_<+10}".format(500))
+# # 3자리 마다 콤마를 찍어주기
+# print("{0:,}".format(100000000000000))
+# # 3자리 마다 콤마를 찍어주기, +- 부호도 붙이기
+# print("{0:+,}".format(100000000000000))
+# print("{0:+,}".format(-100000000000000))
+# # 3자리 마다 콤마를 찍어주기, 부호도 붙이고, 자릿수 확보하기
+# # 돈이 많으면 행복하니까 빈자리는 ^로 채워주기
+# print("{0:^<+30,}".format(100000000000000))
+# # 소수점 출력
+# print("{0:f}".format(5/3))
+# # 소수점을 특정 자리수 까지만 표시 (소수점 3째 자리에서 반올림)
+# print("{0:.2f}".format(5/3))
+
+# 41강. 파일입출력
+# score_file = open("score.txt", "w", encoding="utf8") # write:w
+# print("수학 : 0", file=score_file)
+# print("영어 : 50", file=score_file)
+# score_file.close()
+
+# score_file = open("score.txt", "a", encoding="utf8") #a : append
+# score_file.write("과학 : 80")
+# score_file.write("\n코딩 : 100")
+# score_file.close()
+
+# score_file = open("score.txt", "r", encoding="utf8")
+# print(score_file.read())
+# score_file.close()
+
+# score_file = open("score.txt", "r", encoding="utf8")
+# print(score_file.readline(), end="") # 줄별로 읽기, 한 줄 읽고 커서는 다음 줄로 이동
+# print(score_file.readline(), end="")
+# print(score_file.readline(), end="")
+# print(score_file.readline(), end="")
+# score_file.close()
+
+# score_file = open("score.txt", "r", encoding="utf8")
+# while True:
+#     line = score_file.readline()
+#     if not line:
+#         break
+#     print(line)
+# score_file.close()
+
+score_file = open("score.txt", "r", encoding="utf8")
+lines = score_file.readlines() #list 형태로 저장
+for line in lines:
+    print(line, end="")
+
+score_file.close()
