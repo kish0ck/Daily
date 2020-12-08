@@ -813,39 +813,39 @@ Quiz) 변수를 이용하여 다음 문장을 출력하시오
 # # 소수점을 특정 자리수 까지만 표시 (소수점 3째 자리에서 반올림)
 # print("{0:.2f}".format(5/3))
 
-# 41강. 파일입출력
-# score_file = open("score.txt", "w", encoding="utf8") # write:w
-# print("수학 : 0", file=score_file)
-# print("영어 : 50", file=score_file)
-# score_file.close()
+# # 41강. 파일입출력
+# # score_file = open("score.txt", "w", encoding="utf8") # write:w
+# # print("수학 : 0", file=score_file)
+# # print("영어 : 50", file=score_file)
+# # score_file.close()
 
-# score_file = open("score.txt", "a", encoding="utf8") #a : append
-# score_file.write("과학 : 80")
-# score_file.write("\n코딩 : 100")
-# score_file.close()
+# # score_file = open("score.txt", "a", encoding="utf8") #a : append
+# # score_file.write("과학 : 80")
+# # score_file.write("\n코딩 : 100")
+# # score_file.close()
+
+# # score_file = open("score.txt", "r", encoding="utf8")
+# # print(score_file.read())
+# # score_file.close()
+
+# # score_file = open("score.txt", "r", encoding="utf8")
+# # print(score_file.readline(), end="") # 줄별로 읽기, 한 줄 읽고 커서는 다음 줄로 이동
+# # print(score_file.readline(), end="")
+# # print(score_file.readline(), end="")
+# # print(score_file.readline(), end="")
+# # score_file.close()
+
+# # score_file = open("score.txt", "r", encoding="utf8")
+# # while True:
+# #     line = score_file.readline()
+# #     if not line:
+# #         break
+# #     print(line)
+# # score_file.close()
 
 # score_file = open("score.txt", "r", encoding="utf8")
-# print(score_file.read())
+# lines = score_file.readlines() #list 형태로 저장
+# for line in lines:
+#     print(line, end="")
+
 # score_file.close()
-
-# score_file = open("score.txt", "r", encoding="utf8")
-# print(score_file.readline(), end="") # 줄별로 읽기, 한 줄 읽고 커서는 다음 줄로 이동
-# print(score_file.readline(), end="")
-# print(score_file.readline(), end="")
-# print(score_file.readline(), end="")
-# score_file.close()
-
-# score_file = open("score.txt", "r", encoding="utf8")
-# while True:
-#     line = score_file.readline()
-#     if not line:
-#         break
-#     print(line)
-# score_file.close()
-
-score_file = open("score.txt", "r", encoding="utf8")
-lines = score_file.readlines() #list 형태로 저장
-for line in lines:
-    print(line, end="")
-
-score_file.close()
